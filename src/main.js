@@ -24,7 +24,8 @@ function getToday() {
   //
   let dayValue = weekday[date.getDay()];
   let yearValue = date.getFullYear();
-  let monthValue = date.getMonth();
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+let monthValue = months[date.getMonth()];
   //
   let dayInput = document.getElementById('day');
   let monthInput = document.getElementById('month');
@@ -136,4 +137,25 @@ particlesJS('particles-js', {
     },
   },
   retina_detect: true,
+  function setGreeting() {
+  let hour = new Date().getHours();
+  let text = "";
+
+  if (hour < 12) {
+    text = "Good Morning ☀️";
+  } else if (hour < 18) {
+    text = "Good Afternoon 🌤️";
+  } else {
+    text = "Good Evening 🌙";
+  }
+
+  document.getElementById("greeting").innerText = text;
+}
+
+setGreeting();
+function changeBg() {
+  const colors = ["#1e1e2f", "#2c3e50", "#ff6b6b", "#6a11cb"];
+  let random = Math.floor(Math.random() * colors.length);
+  document.body.style.background = colors[random];
+}
 });
